@@ -1,72 +1,116 @@
 # InfraWatch
 
-Realtime infrastructure monitoring dashboard built using React, Node.js, Socket.IO, and PostgreSQL.
+InfraWatch is a realtime infrastructure observability platform designed for monitoring system-level resource utilization through live telemetry streaming, persistent metric storage, and operational alerting.
+
+The platform collects and visualizes critical infrastructure metrics including CPU utilization, memory consumption, and disk usage through a low-latency telemetry pipeline powered by WebSockets and PostgreSQL-backed persistence.
+
+InfraWatch demonstrates practical concepts used in modern monitoring systems such as realtime telemetry ingestion, metric persistence, operational alerting, and observability dashboard design.
 
 ---
 
-## 🚀 Features
+# 🚀 Capabilities
 
-- Live CPU, RAM, and Disk monitoring
-- Realtime telemetry updates using Socket.IO
-- PostgreSQL metric storage
-- Historical analytics charts
-- Realtime alert system
-- Responsive modern dashboard UI
-- Optimized telemetry rendering
+## 📡 Realtime Telemetry Streaming
+- Continuous CPU utilization monitoring
+- Live memory consumption tracking
+- Disk utilization analytics
+- Low-latency websocket-based metric delivery
+
+## 📊 Observability Dashboard
+- Time-series metric visualization
+- Realtime infrastructure analytics
+- Smoothed telemetry rendering
+- Live operational metric cards
+
+## 🚨 Operational Alerting
+- Threshold-based alert evaluation
+- High resource utilization detection
+- Realtime operational notifications
+- Dynamic monitoring indicators
+
+## 🗄 Telemetry Persistence
+- PostgreSQL-backed metric storage
+- Historical telemetry retrieval
+- Structured metric retention pipeline
+
+## 🎨 Monitoring Interface
+- Responsive observability dashboard
+- Dark-themed monitoring workspace
+- Optimized rendering pipeline
+- Live metric visualization components
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Technology Architecture
 
-### Frontend
+## Client Layer
 - React
 - Recharts
 - Socket.IO Client
+- Vite
 
-### Backend
+## Telemetry Server
 - Node.js
 - Express
 - Socket.IO
+- systeminformation
 
-### Database
+## Persistence Layer
 - PostgreSQL
 
 ---
 
-## 📊 Architecture
+# 📊 System Flow
 
 ```txt
-React Dashboard
-       ↓
-Socket.IO + REST API
-       ↓
-Node.js Backend
-       ↓
-PostgreSQL Database
+Observability Dashboard
+            ↓
+Realtime Telemetry Transport Layer
+            ↓
+Telemetry Collection Server
+            ↓
+PostgreSQL Persistence Layer
 ```
 
 ---
 
-## 📸 Screenshots
+# ⚙ Operational Workflow
 
-### PostgreSQL Metrics Storage
+1. Infrastructure metrics are continuously collected from the host system using low-level telemetry utilities.
+
+2. Collected telemetry is streamed to connected dashboard clients through Socket.IO websocket channels.
+
+3. Metrics are persisted into PostgreSQL for historical analytics and time-series retrieval.
+
+4. The monitoring interface renders live telemetry using dynamic visualization components.
+
+5. Operational thresholds are evaluated continuously to detect abnormal infrastructure behavior.
+
+---
+
+# 📸 Screenshots
+
+## PostgreSQL Metric Storage
 
 ![PostgreSQL Table](./screenshots/table.png)
 
-### InfraWatch Dashboard
+## InfraWatch Monitoring Dashboard
 
 ![InfraWatch Dashboard](./screenshots/architecture.png)
+
 ---
 
-## ⚡ Installation
+# ⚡ Local Deployment
 
-### Clone Repository
+## Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone <repository-url>
 ```
 
-### Frontend
+---
+
+## Client Runtime
 
 ```bash
 cd client
@@ -74,7 +118,14 @@ npm install
 npm run dev
 ```
 
-### Backend
+Client runtime:
+```txt
+http://localhost:5173
+```
+
+---
+
+## Telemetry Server Runtime
 
 ```bash
 cd server
@@ -82,18 +133,63 @@ npm install
 npm start
 ```
 
----
-
-## 📌 Future Improvements
-
-- Docker support
-- Multi-system monitoring
-- Authentication
-- Redis caching
-- Kubernetes deployment
+Server runtime:
+```txt
+http://localhost:5000
+```
 
 ---
 
-## 👨‍💻 Author
+# 🗃 Database Initialization
+
+Create PostgreSQL database:
+
+```sql
+CREATE DATABASE infrawatch;
+```
+
+Create telemetry table:
+
+```sql
+CREATE TABLE metrics (
+  id SERIAL PRIMARY KEY,
+  cpu DECIMAL,
+  ram DECIMAL,
+  disk DECIMAL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Configure environment variables inside:
+
+```txt
+server/.env
+```
+
+Example:
+
+```env
+DB_USER=postgres
+DB_HOST=localhost
+DB_NAME=infrawatch
+DB_PASSWORD=yourpassword
+DB_PORT=5432
+```
+
+---
+
+# 📌 Planned Enhancements
+
+- Containerized deployment pipeline
+- Distributed telemetry aggregation
+- Multi-node infrastructure monitoring
+- Authentication and access control
+- Redis-backed caching layer
+- Kubernetes deployment support
+- Advanced analytics dashboards
+
+---
+
+# 👨‍💻 Author
 
 Steeve Baby
